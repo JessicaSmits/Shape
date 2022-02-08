@@ -1,7 +1,9 @@
 # Shape
-Shape is a program, in which you can create your own world. You'll need an Arduino for it to work. You can just check the code for yourself by downloading and running it. If you have an Arduino and want to experience it for yourself.
+![shape]()
+Shape is a program, in which you can create your own world. You'll need an Arduino for it to work and download [processing](https://processing.org/). You can check the code for yourself by downloading and running it. If you have an Arduino and want to experience it for yourself, read the install below
 
-## Installing
+
+## Install
 **Step 1. Upload "Standard Firmata" to your Arduino.**<br/>
 File > examples > firmata > StandardFirmata. This way processing now knows how to read the arduino.
   
