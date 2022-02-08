@@ -4,12 +4,11 @@
 
 class Quiz {
   String title, welcome, nextScene, q1, q2, q3, q4, finalAdj, finalNoun, adjective, noun, textThe;
-  PFont georgia;
   int indexAdj, indexNoun;
   PImage imgTitle;
   
   //I already defined some things outside of the constructor so the constructor isn't full with 'double' code
-  int oneTimeFade, fade, count, alpha = 0;
+  int oneTimeFade, fadeIn, fade, count, alpha = 0;
   int atQuestion = 1;
   int buttonW = 200;
   int buttonH = 100; 
@@ -26,8 +25,7 @@ class Quiz {
   JSONArray nounCat = json.getJSONArray ("noun categories");
 
   Quiz() {
-    georgia = createFont("georgia.ttf", 70);
-    textFont(georgia);
+    textFont(agency);
 
     imgTitle = loadImage ("titleimg.png");
     title = "Shape";
@@ -40,30 +38,37 @@ class Quiz {
 
   void titleScreen() {
     //I like it centered ;)
-    textAlign(CENTER);
+    textAlign(CENTER, CENTER);
     rectMode(CENTER);
     imageMode(CENTER);  
     image(imgTitle, width/2, height/2);
 
-    if (millis() > duration + 6000 & millis() < duration+8000) {
+    if (millis() > duration + 5000 & millis() < duration+7000) {
       tint(0, alpha);
       if (alpha <= 100) {
         alpha += 1;
       }
       image(imgTitle, width/2, height/2);
-    } else if (millis() > duration+8000 && millis()< duration+15000) {
+    } else if (millis() > duration+7000 && millis()< duration+15000) {
       background(0);
-      fill(fade);
-      textSize(70);
-      text(title, width/2, height/2);
-      textSize(30);
-      text("Push and turn to shape your own world", width/2, height/1.75);
+      push();
+      noFill();
+      stroke(fadeIn);
+      strokeWeight(6);
+      rect(width/2, height/2, 450, 150);
+      pop();
+      fill(fadeIn);
+      textSize(100);
+      text(title, width/2, height/2-12, 360, 120);
+      textSize(50);
+      text("Push and turn to shape your own world", width/2, height/1.65);
+      
       //two if-statement so the text doesn't flicker to black when checking if the first if is true
-      if (fade < 255 && flipColor == true) {
-        fade += 2.5;
+      if (fadeIn < 255 && flipColor == true) {
+        fadeIn += 2.5;
       } 
-      if (fade >= 255) {
-        fade = 255;
+      if (fadeIn >= 255) {
+        fadeIn = 255;
         flipColor = false;
       }
     } else if (millis()>= duration+15000 && millis()<=duration+18000) {
@@ -79,14 +84,17 @@ class Quiz {
   }
 
   void welcomeScreen() {
+    textAlign(CENTER);
     background(0);
+    textFont(georgia);
     textSize(35);
     fill(255);
     text(welcome, width/2, height/2.5);
 
+
     //the famous SPACE KEY!!(i really wanted it)
     //push and pop for the fill
-    if (millis() >= 25000) {
+    if (millis() >= 19000) {
       push();
       textSize(20);
       fill(fade);
@@ -274,6 +282,8 @@ class Quiz {
   }
 
   void showsTitle() {
+    
+    textFont(agency);
     textSize(70);
     fill(255);
     text(landscapeTitle, width/2, height/2);

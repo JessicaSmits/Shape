@@ -24,14 +24,16 @@ boolean maxGradient = false;
 int scenes = 0;
 float amp = 0.2;
 String landscapeTitle;
+PFont georgia, agency;
 
 
 void setup() {
   //P3D so you can make use of the z-axis which makes it 3D
   fullScreen(P3D, 1);
   background(0); 
-  
-  
+  georgia = createFont("georgia.ttf", 70);
+  agency = createFont("agency.ttf", 70); 
+
   arduino = new Arduino(this, Arduino.list()[0], 57600);
   input = new ArduinoRead();
   terrain = new LandscapeGenerator();
@@ -75,18 +77,20 @@ void draw() {
         maxGradient = false;
       }
     }
-    
+
     //I used push and pop for the noStroke and fill 
     push();
     noStroke();
     fill(0, 50);
-    rect(width/2, height/9.5, 400, 56);
+    rect(width/2, height/10.5, 400, 60);
     pop();
-    
+
     fill(255);
-    textSize(28);
-    text(landscapeTitle, width/2, height/9);
-    textSize(18);
+    textFont(agency);
+    textAlign(CENTER);
+    textSize(35);
+    text(landscapeTitle, width/2, height/10, 400, 60);
+    textSize(22);
     text("Press 's' for a screenshot", 110, 25);
 
     //loop through all the color schemes
