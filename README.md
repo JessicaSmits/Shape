@@ -1,5 +1,4 @@
-# Shape
-![shape]()
+# Shape<br/>
 Shape is a program, in which you can create your own world. You'll need an Arduino for it to work and download [processing](https://processing.org/). You can check the code for yourself by downloading and running it. If you have an Arduino and want to experience it for yourself, read the install below
 
 
